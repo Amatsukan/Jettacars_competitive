@@ -46,6 +46,20 @@
 
     <main class="container mx-auto px-6 py-8">
         
+        <!-- Lore/Briefing Section -->
+        <section id="lore-section" class="my-8">
+            <div class="glass-card rounded-xl p-8 max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-4 brand-gradient">Sua Missão</h2>
+                <p class="text-lg text-gray-300 leading-relaxed">
+                    Bem-vindo, Engenheiro(a). O futuro da logística autônoma está em suas mãos. A Jettacars está revolucionando o transporte com o <strong>Jeggy</strong>, um veículo inteligente que não precisa de motoristas. Mas a genialidade deles nasce aqui, neste centro logístico, e você está no coração da operação.
+                    <br><br>
+                    Sua missão: programar a alma das docas de carregamento. Cada linha do seu código ditará a eficiência com que os pedidos são montados e enviados. A pressão é imensa; cada segundo e cada centímetro cúbico contam. Otimize o empacotamento, minimize os custos e atenda aos prazos. Lembre-se, seu código é a diferença entre lucros recordes e uma demissão súbita que encerrará sua carreira.
+                    <br><br>
+                    O desafio começa agora. Mostre-nos do que você é capaz.
+                </p>
+            </div>
+        </section>
+
         <!-- Editor Section -->
         <section id="bot-editor-section" class="mb-16">
             <h2 class="text-4xl font-bold text-center mb-8">Bot Editor</h2>
@@ -139,7 +153,7 @@
                             <ul class="list-disc list-inside space-y-2">
                                 <li><strong>Cost per Tick:</strong> Each tick, an operational cost is deducted from your profit. This cost starts at <strong>$1</strong> and increases by <strong>$0.5</strong> each tick, making time efficiency vital.</li>
                                 <li><strong>Transportation Cost:</strong> The cost of a truck is paid **at the moment of request** (`request_truck`). This is an investment you need to recover.</li>
-                                <li><strong>Profit on Delivery:</strong> When you dispatch a truck with a complete order (`dispatch`), you receive the full `lucroMaximo` (maximum profit) for that order. The challenge is to ensure the profit from orders on a truck exceeds the initial transport cost and accumulated operational costs.</li>
+                                <li><strong>Profit on Delivery:</strong> When you dispatch a truck with a complete order (`dispatch`), you receive the full `maxProfit` for that order. The challenge is to ensure the profit from orders on a truck exceeds the initial transport cost and accumulated operational costs.</li>
                             </ul>
                         </div>
                     </div>
@@ -227,6 +241,7 @@
     }
   ],
   "availableParts": [
+    // Each part has a unique ID for the 'load' command
     { "id": "ch3_2", "type": "chassis_3_wheels" }
   ],
   "docks": [
