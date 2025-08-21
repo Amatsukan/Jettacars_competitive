@@ -49,13 +49,13 @@
         <!-- Lore/Briefing Section -->
         <section id="lore-section" class="my-8">
             <div class="glass-card rounded-xl p-8 max-w-4xl mx-auto text-center">
-                <h2 class="text-3xl font-bold mb-4 brand-gradient">Sua Missão</h2>
+                <h2 class="text-3xl font-bold mb-4 brand-gradient">Your Mission Briefing</h2>
                 <p class="text-lg text-gray-300 leading-relaxed">
-                    Bem-vindo, Engenheiro(a). O futuro da logística autônoma está em suas mãos. A Jettacars está revolucionando o transporte com o <strong>Jeggy</strong>, um veículo inteligente que não precisa de motoristas. Mas a genialidade deles nasce aqui, neste centro logístico, e você está no coração da operação.
+                    Welcome, Engineer. The future of autonomous logistics is in your hands. Jettacars is revolutionizing transport with the <strong>Jeggy</strong>, an intelligent, driverless vehicle. But their genius is born here, in this logistics hub, and you are at the heart of the operation.
                     <br><br>
-                    Sua missão: programar a alma das docas de carregamento. Cada linha do seu código ditará a eficiência com que os pedidos são montados e enviados. A pressão é imensa; cada segundo e cada centímetro cúbico contam. Otimize o empacotamento, minimize os custos e atenda aos prazos. Lembre-se, seu código é a diferença entre lucros recordes e uma demissão súbita que encerrará sua carreira.
+                    Your mission: to program the soul of the loading docks. Every line of your code will dictate the efficiency with which orders are assembled and shipped. The pressure is immense; every second and every cubic inch counts. Optimize packing, minimize costs, and meet deadlines. Remember, your code is the difference between record profits and a sudden dismissal that will end your career.
                     <br><br>
-                    O desafio começa agora. Mostre-nos do que você é capaz.
+                    The challenge begins now. Show us what you've got.
                 </p>
             </div>
         </section>
@@ -160,8 +160,11 @@
 
                     <div class="glass-card rounded-xl p-8">
                         <h3 class="text-2xl font-bold mb-4 text-orange-400">Bot Interaction (API)</h3>
-                         <p class="mb-4 text-gray-300">On each tick, your script is executed. You must use the global functions `readline()`, `print()`, and `debug()` to interact with the game.</p>
-                        <div class="space-y-6">
+                         <div class="space-y-6">
+                            <div>
+                                <h4 class="text-xl font-semibold mb-2">The Stateless Execution Model</h4>
+                                <p class="text-gray-300">It is crucial to understand that your bot operates in a **stateless** manner. On each tick, your script is executed from scratch, with no memory of the previous tick. You cannot use global variables to store information between executions. The `readline()` function is your only source of information about the current state of the world. This model ensures a fair competition, focused purely on your algorithm's efficiency in analyzing the present state and making the best decision for that moment.</p>
+                            </div>
                             <div>
                                 <h4 class="text-xl font-semibold mb-1 font-mono">readline()</h4>
                                 <p class="text-gray-400 mb-2">Reads the current game state. Returns a **JSON string** that you must parse.</p>
@@ -229,26 +232,39 @@
                         <p class="mb-4 text-gray-300">The object you receive from `readline()` will have the following structure:</p>
                         <div class="code-block">
 {
-  "tick": 123,
-  "profit": 1500,
-  "peakProfit": 1800,
-  "orders": [
+  "tick": 123,                // The current game tick
+  "profit": 1500,             // Your current profit/loss
+  "peakProfit": 1800,         // Your score (the highest profit you've reached)
+  "orders": [                 // Array of pending orders
     { 
       "id": 102, 
-      "models": { "small": 2, "mid": 1 }, // N units of each model
-      "maxProfit": 8000, 
-      "deadline": 173 
+      "models": { "small": 2, "mid": 1 }, // Quantity of each model in the order
+      "maxProfit": 8000,      // Profit received if the order is delivered
+      "deadline": 173         // The tick at which this order will expire
     }
   ],
-  "availableParts": [
-    // Each part has a unique ID for the 'load' command
-    { "id": "ch3_2", "type": "chassis_3_wheels" }
+  "availableParts": [         // Array of parts in your warehouse
+    { 
+      "id": "ch3_2",            // Unique ID of the part, used in the 'load' command
+      "type": "chassis_3_wheels" // Type of the part, see the parts table
+    }
   ],
-  "docks": [
+  "docks": [                    // Array of the 4 docks
     {
       "id": 1,
-      "status": "loading",
-      "truck": { "type": "medium", "eta": 0, "items": [...] }
+      "status": "loading",      // Status: 'empty', 'waiting', 'loading', 'in_transit'
+      "truck": {                // Object present if status != 'empty'
+        "type": "medium",       // 'small', 'medium', or 'large'
+        "eta": 0,               // Ticks remaining to arrive or return
+        "items": [              // Array of parts currently in the truck
+          {
+            "type": "chassis_3_wheels",
+            "w": 2.2, "h": 0.4, "d": 1.4,
+            "weight": 180,
+            "x": 0, "y": 0, "z": 0 // Position of the part in the truck
+          }
+        ]
+      }
     }
   ]
 }
