@@ -60,7 +60,7 @@ debug(`Analisando ${gameState.orders.length} pedidos...`);
 
 ## Estrutura do `gameState`
 
-O objeto `gameState` contém todas as informações que seu bot precisa para tomar decisões. A estrutura detalhada pode ser encontrada no documento [**Documentação da Estrutura gameState**](https://www.google.com/search?q=LINK%5FPARA%5FA%5FDOCUMENTACAO%5FAQUI.md "null").
+O objeto `gameState` contém todas as informações que seu bot precisa para tomar decisões. A estrutura detalhada pode ser encontrada no documento [**Documentação da Estrutura gameState**](https://github.com/Amatsukan/Jettacars_competitive/blob/main/game-state.md).
 
 **Resumo das Chaves Principais:**
 
