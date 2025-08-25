@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Functional Prototype - Jettacars</title>
+    <title>Jettacars - competitive bot game</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
@@ -266,12 +266,20 @@
 
                     <div class="glass-card rounded-xl p-8">
                         <h3 class="text-2xl font-bold mb-4 text-orange-400">`gameState` Structure</h3>
-                        <p class="mb-4 text-gray-300">The object you receive from `readline()` will have the following structure:</p>
+                        <p class="mb-4 text-gray-300">
+                            The object you receive from `readline()` will have the following structure. For a detailed breakdown, see the 
+                            <a href="https://github.com/Amatsukan/Jettacars_competitive/blob/main/game-state.md" target="_blank" rel="noopener noreferrer" class="text-orange-400 hover:underline">
+                                full documentation on GitHub
+                            </a>.
+                        </p>
                         <div class="code-block">
 {
   "tick": 123,                // The current game tick
   "profit": 1500,             // Your current profit/loss
   "peakProfit": 1800,         // Your score (the highest profit you've reached)
+  "tickCost": 62.5,           // The operational cost for the current tick
+  "inactiveTicks": 0,         // Consecutive ticks without a valid bot action
+  "lossTicks": 0,             // Consecutive ticks with negative profit
   "orders": [                 // Array of pending orders
     { 
       "id": 102, 
@@ -303,7 +311,8 @@
         ]
       }
     }
-  ]
+  ],
+  "log": []                   // Array of recent event log entries (for context)
 }
                         </div>
                     </div>
