@@ -2,8 +2,6 @@
 
 Bem-vindo ao Jettacars Competitive, um desafio de programação onde você deve criar um bot para gerenciar a logística e a linha de produção de uma montadora de veículos. O objetivo é tomar as melhores decisões a cada momento para maximizar o lucro.
 
-!([https://placehold.co/800x300/4F46E5/FFFFFF?text=Jettacars+Competitive](https://www.google.com/search?q=https://placehold.co/800x300/4F46E5/FFFFFF%3Ftext%3DJettacars%2BCompetitive "null"))
-
 ## Como Funciona
 
 O desafio opera em um modelo de execução **stateless (sem estado)**. A cada "tick" (turno) da simulação, seu script de bot é executado do zero, sem memória do tick anterior.
